@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>countries</title>
+</head>
+<body>
+{% for city in cities %}
+    {{ city.name }}
+    {% for rest in city.restaurants.all %}
+        {{ rest.name }}<br>
+    {% endfor %}
+<br>
+{% endfor %}
+</body>
+</html>

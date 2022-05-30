@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>
+    <a href="{% url 'restaurants-search'  %}" target="_blank">Search</a>
+</h2>
+
+<table border="1" cellpadding="10" cellspacing="1">
+    <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Address</th>
+        <th>Details</th>
+    </tr>
+    {% for restaurant in restaurants %}
+        <tr>
+            <td>{{ restaurant.name }}</td>
+            <td><a href="{% url 'city_restaurants' restaurant.city.pk %}" target="_blank">{{ restaurant.city }}</td></a>
+            <td>{{ restaurant.address }}</td>
+            <td>
+                <a href="{% url 'restaurant-details' restaurant.pk %}" target="_blank">Details</a>
+                <a href="{% url 'restaurant-edit' restaurant.pk %}" target="_blank">Edit</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+<ul>
+   {% for restaurant in restaurants %}
+        <li>
+            {{ restaurant.name }}&nbsp;&nbsp;&nbsp;
+            {{ restaurant.city }}&nbsp;&nbsp;&nbsp;
+            {{ restaurant.address }}&nbsp;&nbsp;&nbsp;
+        </li>
+    {% endfor %}
+</ul>
+
+<br>
+
+</body>
+</html>
